@@ -26,9 +26,9 @@ class ShoppingCart {
     }
 
     addItem(product) {
-        const existingItem = this.items.find(item => item.product.id === product.id);
-        if (existingItem) {
-            existingItem.quantity++;
+        const CurrentItem = this.items.find(item => item.product.id === product.id);
+        if (CurrentItem) {
+            CurrentItem.quantity++;
         } else {
             this.items.push(new ShoppingCartItem(product));
         }
@@ -64,9 +64,9 @@ const cart = new ShoppingCart();
 
 // Product Data
 const products = [
-    new Product(1, 'Baskets', 100),
-    new Product(2, 'Socks', 20),
-    new Product(3, 'Bag', 50)
+    new Product(1, 'Laptop', 2000),
+    new Product(2, 'Mouse', 50),
+    new Product(3, 'Casque', 150)
 ];
 
 // Add event listeners to buttons
@@ -78,7 +78,7 @@ document.querySelectorAll('.btn-add').forEach(button => {
     });
 });
 
-// Handle remove item
+// Remove item
 document.querySelector('.cart-items').addEventListener('click', e => {
     if (e.target.classList.contains('btn-remove')) {
         const productId = parseInt(e.target.dataset.id);
